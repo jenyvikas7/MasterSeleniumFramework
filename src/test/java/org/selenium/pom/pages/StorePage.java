@@ -11,6 +11,8 @@ public class StorePage extends BasePage {
     private final By tile = By.cssSelector(".woocommerce-products-header__title.page-title");
     private final By addToCartButton = By.cssSelector("a[aria-label='Add “Blue Shoes” to your cart']");
 
+    private final By viewCartLink = By.cssSelector("a[title='View cart']");
+
     public StorePage(WebDriver driver) {
         super(driver);
     }
@@ -42,15 +44,21 @@ public class StorePage extends BasePage {
 
     }
 
-    public void clickAddToCartBtn(String productName) {
+    public StorePage clickAddToCartBtn(String productName) {
 
-        By addToCartButton = getAddToCartButtonElement(productName);
-        driver.findElement(addToCartButton).click();
+        By addToCartBtn = getAddToCartButtonElement(productName);
+        driver.findElement(addToCartBtn).click();
+        return this;
     }
 
     public StorePage clickAddToCartButton() {
         driver.findElement(addToCartButton).click();
         return this;
+    }
+
+    public CartPage clickViewCart() {
+        driver.findElement(viewCartLink).click();
+        return new CartPage(driver);
     }
 
 }

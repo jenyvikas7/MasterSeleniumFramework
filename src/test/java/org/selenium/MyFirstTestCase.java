@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.selenium.pom.base.BaseTest;
+import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.HomePage;
 import org.selenium.pom.pages.StorePage;
 import org.testng.Assert;
@@ -52,6 +53,8 @@ public class MyFirstTestCase extends BaseTest {
         storePage.search("Blue");
         storePage.getTitle();
         storePage.clickAddToCartBtn("Blue Jeans");
+        Thread.sleep(5000);
+        CartPage cartPage = storePage.clickViewCart();
 
 
 //        driver.findElement(By.cssSelector("#menu-item-1227>a")).click();
@@ -63,15 +66,15 @@ public class MyFirstTestCase extends BaseTest {
 //                "Search results: “Blue”"
 //        );
 
-        driver.findElement(By.cssSelector("a[aria-label='Add “Blue Shoes” to your cart']")).click();
-
-        Thread.sleep(3000);
-
-        driver.findElement(By.cssSelector("a[title='View cart']")).click();
-        Assert.assertEquals(
-                driver.findElement(By.cssSelector("td[class='product-name']>a")).getText(),
-                "Blue Shoes"
-        );
+//        driver.findElement(By.cssSelector("a[aria-label='Add “Blue Shoes” to your cart']")).click();
+//
+//        Thread.sleep(3000);
+//
+//        driver.findElement(By.cssSelector("a[title='View cart']")).click();
+//        Assert.assertEquals(
+//                driver.findElement(By.cssSelector("td[class='product-name']>a")).getText(),
+//                "Blue Shoes"
+//        );
 
         driver.findElement(By.cssSelector(".wc-proceed-to-checkout>a")).click();
 
